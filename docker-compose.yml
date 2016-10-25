@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+
+  server:
+    image: nodejs-web:latest
+    ports:
+      - 3000:3000
+    networks:
+      - back-tier
+    command: bash -c "cd /usr/src/app && npm run serve"
+
+networks:
+  back-tier:
+  # front-tier:
+# volumes:
+  # db-data:

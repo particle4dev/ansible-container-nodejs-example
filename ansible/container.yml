@@ -1,0 +1,9 @@
+version: "1"
+services:
+  web:
+    image: node:6.9.1
+    ports:
+      - "3000:3000"
+    command: ['/usr/src/app/start.sh']
+
+registries: {}

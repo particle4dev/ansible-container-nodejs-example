@@ -1,0 +1,20 @@
+# This should be your Ansible playbooks to provision your containers.
+# An inventory will be automatically created using the names of the services
+# from your container.yml file.
+# Add any roles or other modules you'll need to this directory too.
+# For many examples of roles, check out Ansible Galaxy: https://galaxy.ansible.com/
+#
+---
+- hosts: web
+  tasks:
+    - name: Create app directory
+      file: path=/usr/src/app state=directory
+
+    - name: Install app dependencies
+      copy: src=source/ dest=/usr/src/app/ owner=root group=root mode=0777 
+    
+    - name: Go to the app folder and run npm install
+      command: bash -lc "cd /usr/src/app/ && npm install"
+
+    - name: Open
+      command: bash -lc "chmod +x /usr/src/app/start.sh"
