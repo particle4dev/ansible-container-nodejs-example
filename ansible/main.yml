@@ -7,6 +7,12 @@
 ---
 - hosts: web
   tasks:
+    - name: Install dumb init
+      get_url: dest=/usr/bin/dumb-init \
+                url=https://github.com/Yelp/dumb-init/releases/download/v1.0.2/dumb-init_1.0.2_amd64 \
+                mode=0775 \
+                validate_certs=no
+
     - name: Create app directory
       file: path=/usr/src/app state=directory
 
@@ -15,6 +21,3 @@
     
     - name: Go to the app folder and run npm install
       command: bash -lc "cd /usr/src/app/ && npm install"
-
-    - name: Open
-      command: bash -lc "chmod +x /usr/src/app/start.sh"
