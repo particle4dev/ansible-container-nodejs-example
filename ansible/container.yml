@@ -4,6 +4,7 @@ services:
     image: node:6.9.1
     ports:
       - "3000:3000"
-    command: ['/usr/bin/dumb-init', 'node', '/usr/src/app/index.js']
+    user: 'nodejs'
+    command: ['/usr/bin/dumb-init', 'node', '/home/nodejs/app/index.js']
 
 registries: {}
